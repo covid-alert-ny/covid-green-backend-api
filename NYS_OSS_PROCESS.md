@@ -4,7 +4,7 @@ This document describes how Project Vagabond will manage this fork of [covidgree
 
 This process attempts to solve or make non-issues the following items:
 
-1. Project Vagabond follows it's own CICD process based on Github Actions. To support that process, this fork contains [NYS specific workflows](.github/workflows) and `.md` files describing that process which should not be contributed back to Covid Green. 
+1. Project Vagabond follows its own CICD process based on Github Actions. To support that process, this fork contains [NYS specific workflows](.github/workflows) and `.md` files describing that process which should not be contributed back to Covid Green. 
 1. Project Vagabond uses Github secrets as part of its CICD process and those cannot exist in a public Github organization.
 
 ## Branches
