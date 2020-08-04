@@ -1,9 +1,7 @@
 name: Run Tests / Verify Linting
 
 on:
-  pull_request:
-    branches:
-      *
+  pull_request
   push:
     branches:
       current
