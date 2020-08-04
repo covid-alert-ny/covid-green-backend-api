@@ -1,10 +1,10 @@
 name: Run Tests / Verify Linting
 
 on:
-  pull_request:
   push:
     branches:
       current
+  pull_request:
 
 jobs:
   run-tests:
