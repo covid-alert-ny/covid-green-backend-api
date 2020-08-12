@@ -89,7 +89,7 @@ jobs:
       - name: DEV Build, tag, and push MIGRATIONS image to Amazon ECR
         id: build-migrations-image-dev
         env:
-          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          ECR_REGISTRY: ${{ steps.login-ecr-dev.outputs.registry }}
           ECR_REPOSITORY: ${{ secrets.REPOSITORY_MIGRATIONS_DEV }}
           IMAGE_TAG: ${{ steps.get-next-tag.outputs.new_tag }}
         run: |
@@ -127,7 +127,7 @@ jobs:
       - name: Build, tag, and push MIGRATIONS image to Amazon ECR
         id: build-migrations-image
         env:
-          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          ECR_REGISTRY: ${{ steps.login-ecr-qa.outputs.registry }}
           ECR_REPOSITORY: ${{ secrets.REPOSITORY_MIGRATIONS }}
           IMAGE_TAG: ${{ steps.get-next-tag.outputs.new_tag }}
         run: |
