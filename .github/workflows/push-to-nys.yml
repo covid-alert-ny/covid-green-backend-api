@@ -125,7 +125,7 @@ jobs:
           echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
 
       - name: Build, tag, and push MIGRATIONS image to Amazon ECR
-        id: build-migrations-image
+        id: build-migrations-image-qa
         env:
           ECR_REGISTRY: ${{ steps.login-ecr-qa.outputs.registry }}
           ECR_REPOSITORY: ${{ secrets.REPOSITORY_MIGRATIONS }}
@@ -163,7 +163,7 @@ jobs:
           echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
 
       - name: Build, tag, and push MIGRATIONS image to Amazon ECR
-        id: build-migrations-image
+        id: build-migrations-image-prod
         env:
           ECR_REGISTRY: ${{ steps.login-ecr-prod.outputs.registry }}
           ECR_REPOSITORY: ${{ secrets.REPOSITORY_MIGRATIONS }}
