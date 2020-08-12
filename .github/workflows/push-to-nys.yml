@@ -63,7 +63,7 @@ jobs:
           TAG_CONTEXT: branch
           RELEASE_BRANCHES: nys
 
-## DEV ####################################
+      ## DEV ####################################
       - name: DEV: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -101,7 +101,7 @@ jobs:
         if: always()
         run: docker logout ${{ steps.login-ecr-dev.outputs.registry }}
 
-## QA ####################################
+      ## QA ####################################
       - name: QA: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
