@@ -80,7 +80,7 @@ jobs:
         env:
           ECR_REGISTRY: ${{ steps.login-ecr-dev.outputs.registry }}
           ECR_REPOSITORY: ${{ secrets.REPOSITORY_API_DEV }}
-          IMAGE_TAG: "${{ steps.get-next-tag.outputs.new_tag }}.${{ GITHUB_RUN_ID }}-add-nys-settings"
+          IMAGE_TAG: "${{ steps.get-next-tag.outputs.new_tag }}.${{ github.run_id }}-add-nys-settings"
         run: |
           docker build -f ./Dockerfile-api -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
@@ -91,7 +91,7 @@ jobs:
         env:
           ECR_REGISTRY: ${{ steps.login-ecr-dev.outputs.registry }}
           ECR_REPOSITORY: ${{ secrets.REPOSITORY_MIGRATIONS_DEV }}
-          IMAGE_TAG: "${{ steps.get-next-tag.outputs.new_tag }}.${{ GITHUB_RUN_ID }}-add-nys-settings"
+          IMAGE_TAG: "${{ steps.get-next-tag.outputs.new_tag }}.${{ github.run_id }}-add-nys-settings"
         run: |
           docker build -f ./Dockerfile-migrate -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
