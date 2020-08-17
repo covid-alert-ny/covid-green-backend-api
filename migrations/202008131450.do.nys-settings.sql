@@ -6,4 +6,3 @@ INSERT INTO settings(settings_key, settings_value) VALUES('minAge', '16');
 INSERT INTO settings(settings_key, settings_value) VALUES('riskGroupMinAge', '60');
 INSERT INTO settings(settings_key, settings_value) VALUES('fileLimit', '1');
 INSERT INTO settings(settings_key, settings_value) VALUES('fileLimitiOS', '3');
-
