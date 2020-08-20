@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - add-nys-settings
+      - bugfix/betterlogs
 
 jobs:
   run-tests:
@@ -80,7 +81,7 @@ jobs:
         env:
           ECR_REGISTRY: ${{ steps.login-ecr-dev.outputs.registry }}
           ECR_REPOSITORY: ${{ secrets.REPOSITORY_API_DEV }}
-          IMAGE_TAG: "${{ steps.get-next-tag.outputs.new_tag }}.${{ github.run_id }}-add-nys-settings"
+          IMAGE_TAG: "${{ steps.get-next-tag.outputs.new_tag }}.${{ github.run_id }}-branch"
         run: |
           docker build -f ./Dockerfile-api -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
@@ -91,7 +92,7 @@ jobs:
         env:
           ECR_REGISTRY: ${{ steps.login-ecr-dev.outputs.registry }}
           ECR_REPOSITORY: ${{ secrets.REPOSITORY_MIGRATIONS_DEV }}
-          IMAGE_TAG: "${{ steps.get-next-tag.outputs.new_tag }}.${{ github.run_id }}-add-nys-settings"
+          IMAGE_TAG: "${{ steps.get-next-tag.outputs.new_tag }}.${{ github.run_id }}-branch"
         run: |
           docker build -f ./Dockerfile-migrate -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
@@ -118,7 +119,7 @@ jobs:
         env:
           ECR_REGISTRY: ${{ steps.login-ecr-qa.outputs.registry }}
           ECR_REPOSITORY: ${{ secrets.REPOSITORY_API_QA }}
-          IMAGE_TAG: "${{ steps.get-next-tag.outputs.new_tag }}-add-nys-settings"
+          IMAGE_TAG: "${{ steps.get-next-tag.outputs.new_tag }}-branch"
         run: |
           docker build -f ./Dockerfile-api -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
@@ -129,7 +130,7 @@ jobs:
         env:
           ECR_REGISTRY: ${{ steps.login-ecr-qa.outputs.registry }}
           ECR_REPOSITORY: ${{ secrets.REPOSITORY_MIGRATIONS_QA }}
-          IMAGE_TAG: "${{ steps.get-next-tag.outputs.new_tag }}-add-nys-settings"
+          IMAGE_TAG: "${{ steps.get-next-tag.outputs.new_tag }}-branch"
         run: |
           docker build -f ./Dockerfile-migrate -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
@@ -156,7 +157,7 @@ jobs:
         env:
           ECR_REGISTRY: ${{ steps.login-ecr-prod.outputs.registry }}
           ECR_REPOSITORY: ${{ secrets.REPOSITORY_API_PROD }}
-          IMAGE_TAG: "${{ steps.get-next-tag.outputs.new_tag }}-add-nys-settings"
+          IMAGE_TAG: "${{ steps.get-next-tag.outputs.new_tag }}-branch"
         run: |
           docker build -f ./Dockerfile-api -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
@@ -167,7 +168,7 @@ jobs:
         env:
           ECR_REGISTRY: ${{ steps.login-ecr-prod.outputs.registry }}
           ECR_REPOSITORY: ${{ secrets.REPOSITORY_MIGRATIONS_PROD }}
-          IMAGE_TAG: "${{ steps.get-next-tag.outputs.new_tag }}-add-nys-settings"
+          IMAGE_TAG: "${{ steps.get-next-tag.outputs.new_tag }}-branch"
         run: |
           docker build -f ./Dockerfile-migrate -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
